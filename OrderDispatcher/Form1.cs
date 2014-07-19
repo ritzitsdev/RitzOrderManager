@@ -99,7 +99,7 @@ namespace OrderDispatcher
     {
       string userMsg = "Order " + e.Name.Replace(".order", "") + " has been transmitted to the outlab.";
       this.Invoke((MethodInvoker)delegate { lblSettingsChanged.Text = userMsg; });
-      logIt(userMsg);
+      LogIt logEntry = new LogIt(userMsg);
     } // end OnDeleted
 
     public void OnCreated(object sender, FileSystemEventArgs e)
@@ -111,7 +111,7 @@ namespace OrderDispatcher
     {
       this.Invoke((MethodInvoker)delegate { listBox.Items.Add(String.Format("New Order Created -- {0}", e.FullPath)); });
       string userMsg = "New Order Created -- " + e.Name.Replace(".order", "");
-      logIt(userMsg);
+      LogIt logEntry = new LogIt(userMsg);
     } // end OnRenamed
 
     private void btnRefresh_Click(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace OrderDispatcher
       }
     } // end btnOutlab_Click
 
-    public void moveDirectory(string destination, object order)
+    private void moveDirectory(string destination, object order)
     {
       string listBoxSelected = Convert.ToString(order);
       // get destination folder from xml
@@ -200,7 +200,7 @@ namespace OrderDispatcher
             break;
         }
         lblSettingsChanged.Text = userMsg;
-        logIt(userMsg);
+        LogIt logEntry = new LogIt(userMsg);
       }
       catch (Exception e)
       {
@@ -334,20 +334,10 @@ namespace OrderDispatcher
       return details;
     } // end getOrderDetails
 
-    public void logIt(string userMsg)
-    {
-      DateTime dateToday = DateTime.Now;
-      string timeStamp = dateToday.ToString();
-      //string logPath = @"C:\Program Files\ITS\Ritz_Order_Manager\Logs\OrderManagerLog.txt";
-      string logPath = GlobalClass.logFile;
-
-      File.AppendAllText(logPath, timeStamp + " -- " + userMsg + Environment.NewLine);
-    } // end logIt
-
     private void clearOldLogs()
     {
-      DateTime tenDaysAgo = DateTime.Today.AddDays(-10);
-      string dateToDelete = tenDaysAgo.ToString();
+      DateTime oldestOrder = DateTime.Today.AddDays(-30);
+      //string dateToDelete = tenDaysAgo.ToString();
       //string logPath = @"C:\Program Files\ITS\Ritz_Order_Manager\Logs\OrderManagerLog.txt";
       string logPath = GlobalClass.logFile;
 
@@ -358,7 +348,7 @@ namespace OrderDispatcher
         {
           string[] logEntry = logEntries[l].Split(new Char[]{'-'});
           DateTime logDate = Convert.ToDateTime(logEntry[0]);
-          if(DateTime.Compare(logDate, tenDaysAgo) < 0)   // < 0 means it's older than 10 days
+          if(DateTime.Compare(logDate, oldestOrder) < 0)   // < 0 means it's older than 30 days
           {
             logEntries.RemoveAt(l);
           }
@@ -369,35 +359,8 @@ namespace OrderDispatcher
 
     private void btnHistory_Click(object sender, EventArgs e)
     {
-      if(txtBoxHistory.Text == "")
-      {
-        MessageBox.Show("Please enter an order number.");
-      }
-      else
-      {
-        string orderNumber = txtBoxHistory.Text;
-        //string logPath = @"C:\Program Files\ITS\Ritz_Order_Manager\Logs\OrderManagerLog.txt";
-        string logPath = GlobalClass.logFile;
-        string orderHistory = string.Empty;
-
-        if (File.Exists(logPath))
-        {
-          var logEntries = File.ReadLines(logPath).ToList();
-          foreach (string logEntry in logEntries)
-          {
-            if(logEntry.Contains(orderNumber))
-            {
-              orderHistory += logEntry + Environment.NewLine;
-            }
-          }
-        }
-        if (orderHistory == "")
-        {
-          orderHistory = "Order not found.";
-        }
-        MessageBox.Show(orderHistory);
-        txtBoxHistory.Text = "";
-      }
+      OrderHistory form = new OrderHistory();
+      form.Show();
     } // end btnHistory_Click
 
   }

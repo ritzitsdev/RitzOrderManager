@@ -37,9 +37,7 @@
       this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.btnDetails = new System.Windows.Forms.Button();
       this.lblSettingsChanged = new System.Windows.Forms.Label();
-      this.txtBoxHistory = new System.Windows.Forms.TextBox();
       this.btnHistory = new System.Windows.Forms.Button();
-      this.label1 = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -130,41 +128,22 @@
       this.lblSettingsChanged.Size = new System.Drawing.Size(0, 20);
       this.lblSettingsChanged.TabIndex = 5;
       // 
-      // txtBoxHistory
-      // 
-      this.txtBoxHistory.Location = new System.Drawing.Point(406, 42);
-      this.txtBoxHistory.Name = "txtBoxHistory";
-      this.txtBoxHistory.Size = new System.Drawing.Size(97, 20);
-      this.txtBoxHistory.TabIndex = 6;
-      // 
       // btnHistory
       // 
-      this.btnHistory.Location = new System.Drawing.Point(509, 40);
+      this.btnHistory.Location = new System.Drawing.Point(418, 35);
       this.btnHistory.Name = "btnHistory";
-      this.btnHistory.Size = new System.Drawing.Size(75, 23);
+      this.btnHistory.Size = new System.Drawing.Size(166, 27);
       this.btnHistory.TabIndex = 7;
-      this.btnHistory.Text = "View History";
+      this.btnHistory.Text = "View History - Resend Order";
       this.btnHistory.UseVisualStyleBackColor = true;
       this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
-      // 
-      // label1
-      // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(249, 43);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(156, 17);
-      this.label1.TabIndex = 8;
-      this.label1.Text = "Enter an order number:";
       // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(596, 476);
-      this.Controls.Add(this.label1);
       this.Controls.Add(this.btnHistory);
-      this.Controls.Add(this.txtBoxHistory);
       this.Controls.Add(this.lblSettingsChanged);
       this.Controls.Add(this.btnDetails);
       this.Controls.Add(this.btnOutlab);
@@ -193,9 +172,7 @@
     private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     private System.Windows.Forms.Button btnDetails;
     public System.Windows.Forms.Label lblSettingsChanged;
-    private System.Windows.Forms.TextBox txtBoxHistory;
     private System.Windows.Forms.Button btnHistory;
-    private System.Windows.Forms.Label label1;
 
   }
 }

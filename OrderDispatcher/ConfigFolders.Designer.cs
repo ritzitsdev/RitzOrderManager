@@ -107,6 +107,7 @@
       this.Controls.Add(this.btnAdd);
       this.Controls.Add(this.lBoxWatched);
       this.Name = "ConfigFolders";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Settings";
       this.Load += new System.EventHandler(this.ConfigFolders_Load_1);
       this.ResumeLayout(false);

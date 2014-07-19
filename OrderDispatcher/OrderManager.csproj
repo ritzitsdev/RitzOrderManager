@@ -80,6 +80,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIt.cs" />
+    <Compile Include="OrderHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderHistory.Designer.cs">
+      <DependentUpon>OrderHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConfigFolders.cs">
@@ -88,15 +95,12 @@
     <Compile Include="ConfigFolders.Designer.cs">
       <DependentUpon>ConfigFolders.cs</DependentUpon>
     </Compile>
-    <Compile Include="ResendOrders.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ResendOrders.Designer.cs">
-      <DependentUpon>ResendOrders.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderHistory.resx">
+      <DependentUpon>OrderHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,9 +114,6 @@
     </Compile>
     <EmbeddedResource Include="ConfigFolders.resx">
       <DependentUpon>ConfigFolders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResendOrders.resx">
-      <DependentUpon>ResendOrders.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="OrderDispatcher_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
